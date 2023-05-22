@@ -36,6 +36,20 @@ zypper --non-interactive install -y --allow-downgrade \
  python3-pyelftools \
  tar
 
+#
+# Clone, build and install libvfn
+#
+# Assumptions:
+#
+# - These commands are executed with sufficient privileges (sudo/root)
+#
+git clone https://github.com/OpenMPDK/libvfn.git
+cd libvfn
+git checkout v1.0.0
+meson setup builddir
+meson compile -C builddir
+meson install -C builddir
+
 # Install packages via the Python package-manager (pip)
 python3 -m pip install --upgrade pip
 python3 -m pip install \

@@ -34,3 +34,17 @@ python3 -m ensurepip --upgrade
 # a "File name too long", 0.60 seems ok.
 python3 -m pip install meson==0.60
 
+#
+# Clone, build and install libvfn
+#
+# Assumptions:
+#
+# - These commands are executed with sufficient privileges (sudo/root)
+#
+git clone https://github.com/OpenMPDK/libvfn.git
+cd libvfn
+git checkout v1.0.0
+meson setup builddir
+meson compile -C builddir
+meson install -C builddir
+

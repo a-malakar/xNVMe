@@ -41,3 +41,17 @@ apt-get -qy install \
  python3-venv \
  uuid-dev
 
+#
+# Clone, build and install libvfn
+#
+# Assumptions:
+#
+# - These commands are executed with sufficient privileges (sudo/root)
+#
+git clone https://github.com/OpenMPDK/libvfn.git
+cd libvfn
+git checkout v1.0.0
+meson setup builddir
+meson compile -C builddir
+meson install -C builddir
+
